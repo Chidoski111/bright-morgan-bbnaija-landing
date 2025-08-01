@@ -2,7 +2,7 @@
 
 ## Current Goals
 
-- Updating landing page content for BBNaija using bright-docs data while preserving existing design
+- Fixed responsive design issues in SlidingImages component - replaced vw units with rem/em, added comprehensive mobile breakpoints (320px to 1441px+), fixed horizontal overflow, enhanced mobile scroll detection and touch handling, improved modal behavior across devices
 
 ## Current Blockers
 

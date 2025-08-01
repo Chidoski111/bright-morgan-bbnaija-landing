@@ -49,21 +49,54 @@ export default function SlidingImages() {
         selectedIndex: null
     });
     const [lastScrollY, setLastScrollY] = useState(0);
+    const [isTouch, setIsTouch] = useState(false);
+    const [viewportWidth, setViewportWidth] = useState(0);
+
+    // Initialize viewport width and touch detection
+    useEffect(() => {
+        const updateViewport = () => {
+            setViewportWidth(window.innerWidth);
+            setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0);
+        };
+        
+        updateViewport();
+        window.addEventListener('resize', updateViewport);
+        return () => window.removeEventListener('resize', updateViewport);
+    }, []);
+
+    // Responsive scroll transform values based on viewport
+    const getScrollTransforms = () => {
+        if (viewportWidth <= 479) {
+            return { x1: [0, 80], x2: [0, -80] }; // Reduced movement on small mobile
+        } else if (viewportWidth <= 600) {
+            return { x1: [0, 100], x2: [0, -100] }; // Small mobile
+        } else if (viewportWidth <= 768) {
+            return { x1: [0, 120], x2: [0, -120] }; // Tablets
+        } else if (viewportWidth <= 1024) {
+            return { x1: [0, 140], x2: [0, -140] }; // Large tablets
+        } else {
+            return { x1: [0, 150], x2: [0, -150] }; // Desktop
+        }
+    };
 
     const { scrollYProgress } = useScroll({
         target: container,
         offset: ["start end", "end start"]
-    })
+    });
 
-    const x1 = useTransform(scrollYProgress, [0, 1], [0, 150])
-    const x2 = useTransform(scrollYProgress, [0, 1], [0, -150])
-    const height = useTransform(scrollYProgress, [0, 0.9], [50, 0])
+    const transforms = getScrollTransforms();
+    const x1 = useTransform(scrollYProgress, [0, 1], transforms.x1);
+    const x2 = useTransform(scrollYProgress, [0, 1], transforms.x2);
+    const height = useTransform(scrollYProgress, [0, 0.9], [50, 0]);
 
-    // Handle scroll detection to close modal
+    // Enhanced scroll detection to close modal with mobile-specific handling
     useEffect(() => {
+        let scrollTimer;
+        
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
-            const scrollThreshold = 50; // Close modal if user scrolls more than 50px
+            // More sensitive threshold for mobile devices
+            const scrollThreshold = isTouch ? 30 : 50;
             
             if (modalState.isOpen && Math.abs(currentScrollY - lastScrollY) > scrollThreshold) {
                 closeModal();
@@ -71,18 +104,38 @@ export default function SlidingImages() {
             setLastScrollY(currentScrollY);
         };
 
+        const handleTouchMove = (e) => {
+            if (modalState.isOpen) {
+                // Clear any existing timer
+                clearTimeout(scrollTimer);
+                
+                // Set a timer to close modal after touch movement stops
+                scrollTimer = setTimeout(() => {
+                    const currentScrollY = window.scrollY;
+                    if (Math.abs(currentScrollY - lastScrollY) > 20) {
+                        closeModal();
+                    }
+                }, 150);
+            }
+        };
+
         if (modalState.isOpen) {
             window.addEventListener('scroll', handleScroll, { passive: true });
-            window.addEventListener('touchmove', handleScroll, { passive: true });
+            if (isTouch) {
+                window.addEventListener('touchmove', handleTouchMove, { passive: true });
+                window.addEventListener('touchend', handleScroll, { passive: true });
+            }
         }
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('touchmove', handleScroll);
+            window.removeEventListener('touchmove', handleTouchMove);
+            window.removeEventListener('touchend', handleScroll);
+            clearTimeout(scrollTimer);
         };
-    }, [modalState.isOpen, lastScrollY]);
+    }, [modalState.isOpen, lastScrollY, isTouch]);
 
-    // Handle escape key to close modal
+    // Handle escape key and prevent body scroll
     useEffect(() => {
         const handleKeyDown = (event) => {
             if (event.key === 'Escape' && modalState.isOpen) {
@@ -92,8 +145,10 @@ export default function SlidingImages() {
 
         if (modalState.isOpen) {
             document.addEventListener('keydown', handleKeyDown);
-            // Prevent body scroll when modal is open
-            document.body.style.overflow = 'hidden';
+            // Prevent body scroll when modal is open, but allow on mobile for accessibility
+            if (!isTouch || viewportWidth > 768) {
+                document.body.style.overflow = 'hidden';
+            }
         } else {
             document.body.style.overflow = 'unset';
         }
@@ -102,7 +157,7 @@ export default function SlidingImages() {
             document.removeEventListener('keydown', handleKeyDown);
             document.body.style.overflow = 'unset';
         };
-    }, [modalState.isOpen]);
+    }, [modalState.isOpen, isTouch, viewportWidth]);
 
     const openModal = (project, index, slider) => {
         setLastScrollY(window.scrollY);
@@ -124,7 +179,8 @@ export default function SlidingImages() {
     };
 
     const handleImageClick = (project, index, slider) => {
-        if (typeof window !== 'undefined' && window.innerWidth < 768) {
+        // Disable modal on small devices (mobile phones) to prevent page expansion
+        if (typeof window !== 'undefined' && window.innerWidth <= 600) {
             return;
         }
         openModal(project, index, slider);

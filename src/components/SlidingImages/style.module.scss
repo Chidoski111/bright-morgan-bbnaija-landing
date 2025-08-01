@@ -1,25 +1,32 @@
 .slidingImages{
     display: flex;
     flex-direction: column;
-    gap: 3vw;
+    gap: 2rem;
     position: relative;
-    margin-top: 200px;
+    margin-top: 12.5rem;
     background-color: white;
     z-index: 1;
+    overflow-x: hidden; // Prevent horizontal scrolling
+    width: 100%;
+    
     .slider{
         display: flex;
         position: relative;
-        gap: 3vw;
-        width: 120vw;
-        left: -10vw;
+        gap: 1.5rem;
+        width: 110%;
+        left: -5%;
+        
         .project{
             width: 25%;
-            height: 20vw;
+            height: 16rem;
+            min-height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 0.75rem;
+            overflow: hidden;
             
             &:hover {
                 transform: scale(1.05);
@@ -34,20 +41,26 @@
                 position: relative;
                 width: 80%;
                 height: 80%;
+                border-radius: 0.5rem;
+                overflow: hidden;
+                
                 img{
                     object-fit: cover;
+                    border-radius: 0.5rem;
                 }
             }
         }
     }
+    
     .circleContainer{
         background-color: red;
         position: relative;
-        margin-top: 100px;
+        margin-top: 6.25rem;
+        
         .circle{
             height: 1550%;
-            width: 120%;
-            left: -10%;
+            width: 110%;
+            left: -5%;
             border-radius: 0 0 50% 50%;
             background-color: white;
             z-index: 1;
@@ -55,23 +68,193 @@
             box-shadow: 0px 60px 50px rgba(0, 0, 0, 0.748);
         }
     }
-    @media (max-width: 768px) {
-        margin-top: 100px;
+
+    // Extra Small Mobile (320px - 479px)
+    @media (max-width: 479px) {
+        margin-top: 4rem;
+        gap: 1rem;
+        
         .slider {
-            gap: 6vw;
+            gap: 0.75rem;
+            width: 105%;
+            left: -2.5%;
+            
             .project {
-                width: 50%;
-                height: 40vw;
+                width: 45%;
+                height: 12rem;
+                min-height: 160px;
                 
                 &:hover {
-                    transform: none; // Disable hover effects on mobile
+                    transform: none;
                     box-shadow: none;
                 }
                 
                 &:active {
                     transform: scale(0.95);
                 }
+                
+                .imageContainer {
+                    width: 90%;
+                    height: 90%;
+                }
             }
+        }
+        
+        .circleContainer {
+            margin-top: 3rem;
+        }
+    }
+
+    // Small Mobile (480px - 600px)
+    @media (min-width: 480px) and (max-width: 600px) {
+        margin-top: 5rem;
+        gap: 1.25rem;
+        
+        .slider {
+            gap: 1rem;
+            width: 108%;
+            left: -4%;
+            
+            .project {
+                width: 42%;
+                height: 13rem;
+                min-height: 180px;
+                
+                &:hover {
+                    transform: none;
+                    box-shadow: none;
+                }
+                
+                &:active {
+                    transform: scale(0.95);
+                }
+                
+                .imageContainer {
+                    width: 85%;
+                    height: 85%;
+                }
+            }
+        }
+        
+        .circleContainer {
+            margin-top: 4rem;
+        }
+    }
+
+    // Tablets (601px - 768px)
+    @media (min-width: 601px) and (max-width: 768px) {
+        margin-top: 6rem;
+        gap: 1.5rem;
+        
+        .slider {
+            gap: 1.25rem;
+            width: 108%;
+            left: -4%;
+            
+            .project {
+                width: 35%;
+                height: 14rem;
+                min-height: 200px;
+                
+                &:hover {
+                    transform: scale(1.02);
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+                }
+                
+                &:active {
+                    transform: scale(0.96);
+                }
+                
+                .imageContainer {
+                    width: 82%;
+                    height: 82%;
+                }
+            }
+        }
+        
+        .circleContainer {
+            margin-top: 5rem;
+        }
+    }
+
+    // Large Tablets (769px - 1024px)
+    @media (min-width: 769px) and (max-width: 1024px) {
+        margin-top: 8rem;
+        gap: 1.75rem;
+        
+        .slider {
+            gap: 1.5rem;
+            width: 109%;
+            left: -4.5%;
+            
+            .project {
+                width: 30%;
+                height: 15rem;
+                min-height: 220px;
+                
+                .imageContainer {
+                    width: 82%;
+                    height: 82%;
+                }
+            }
+        }
+        
+        .circleContainer {
+            margin-top: 5.5rem;
+        }
+    }
+
+    // Desktop (1025px - 1280px)
+    @media (min-width: 1025px) and (max-width: 1280px) {
+        margin-top: 10rem;
+        gap: 2rem;
+        
+        .slider {
+            gap: 1.75rem;
+            width: 110%;
+            left: -5%;
+            
+            .project {
+                width: 26%;
+                height: 15.5rem;
+                min-height: 240px;
+                
+                .imageContainer {
+                    width: 80%;
+                    height: 80%;
+                }
+            }
+        }
+        
+        .circleContainer {
+            margin-top: 6rem;
+        }
+    }
+
+    // Large Desktop (1281px+)
+    @media (min-width: 1281px) {
+        margin-top: 12.5rem;
+        gap: 2.5rem;
+        
+        .slider {
+            gap: 2rem;
+            width: 110%;
+            left: -5%;
+            
+            .project {
+                width: 25%;
+                height: 16rem;
+                min-height: 260px;
+                
+                .imageContainer {
+                    width: 80%;
+                    height: 80%;
+                }
+            }
+        }
+        
+        .circleContainer {
+            margin-top: 6.25rem;
         }
     }
 }
@@ -89,14 +272,14 @@
     justify-content: center;
     z-index: 1000;
     backdrop-filter: blur(5px);
-    padding: 20px;
+    padding: 1.25rem;
 }
 
 .modalContent {
     position: relative;
     max-width: 90vw;
     max-height: 90vh;
-    border-radius: 12px;
+    border-radius: 0.75rem;
     overflow: hidden;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
 }
@@ -105,31 +288,31 @@
     position: relative;
     width: 80vw;
     height: 80vh;
-    max-width: 800px;
-    max-height: 600px;
+    max-width: 50rem;
+    max-height: 37.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
+    border-radius: 0.75rem;
     overflow: hidden;
 }
 
 .modalImage {
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 0.75rem;
 }
 
 .closeButton {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 0.9375rem;
+    right: 0.9375rem;
     background: rgba(0, 0, 0, 0.7);
     color: white;
     border: none;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 24px;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -147,22 +330,86 @@
     }
 }
 
-@media (max-width: 768px) {
+// Mobile Modal Styles
+@media (max-width: 479px) {
+    .modalOverlay {
+        padding: 0.75rem;
+    }
+    
     .modalContent {
         max-width: 95vw;
         max-height: 85vh;
     }
     
     .modalImageContainer {
-        width: 90vw;
+        width: 88vw;
+        height: 65vh;
+        max-width: none;
+        max-height: none;
+    }
+    
+    .closeButton {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1.125rem;
+        top: 0.625rem;
+        right: 0.625rem;
+    }
+}
+
+@media (min-width: 480px) and (max-width: 600px) {
+    .modalOverlay {
+        padding: 1rem;
+    }
+    
+    .modalContent {
+        max-width: 92vw;
+        max-height: 87vh;
+    }
+    
+    .modalImageContainer {
+        width: 85vw;
+        height: 68vh;
+    }
+    
+    .closeButton {
+        width: 2.125rem;
+        height: 2.125rem;
+        font-size: 1.25rem;
+        top: 0.75rem;
+        right: 0.75rem;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 768px) {
+    .modalOverlay {
+        padding: 1.125rem;
+    }
+    
+    .modalContent {
+        max-width: 90vw;
+        max-height: 88vh;
+    }
+    
+    .modalImageContainer {
+        width: 82vw;
         height: 70vh;
     }
     
     .closeButton {
-        width: 35px;
-        height: 35px;
-        font-size: 20px;
-        top: 10px;
-        right: 10px;
+        width: 2.25rem;
+        height: 2.25rem;
+        font-size: 1.375rem;
+        top: 0.8125rem;
+        right: 0.8125rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .modalImageContainer {
+        width: 78vw;
+        height: 75vh;
+        max-width: 45rem;
+        max-height: 35rem;
     }
 }
