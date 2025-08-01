@@ -124,6 +124,9 @@ export default function SlidingImages() {
     };
 
     const handleImageClick = (project, index, slider) => {
+        if (typeof window !== 'undefined' && window.innerWidth < 768) {
+            return;
+        }
         openModal(project, index, slider);
     };
 
