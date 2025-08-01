@@ -1,6 +1,33 @@
 
 body{
     margin: 0px;
-    overflow: hidden; /* Hide scrollbars */
     cursor: wait;
+    -webkit-tap-highlight-color: transparent;
+    width: 100%;
+}
+
+/* Global responsive styles */
+@media (max-width: 768px) {
+    .padding-x {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .padding-x-lg {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    
+    h1 {
+        font-size: calc(2rem + 2vw);
+    }
+    
+    p {
+        font-size: calc(1rem + 0.5vw);
+    }
+}
+
+/* Enable smooth scrolling */
+html {
+    scroll-behavior: smooth;
 }

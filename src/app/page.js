@@ -17,7 +17,14 @@ export default function Home() {
     (
       async () => {
           const LocomotiveScroll = (await import('locomotive-scroll')).default
-          const locomotiveScroll = new LocomotiveScroll();
+          const locomotiveScroll = new LocomotiveScroll({
+            lenisOptions: {
+              touchMultiplier: 2,
+              infinite: false,
+              smoothTouch: true,
+              gestureOrientation: "vertical"
+            }
+          });
 
           setTimeout( () => {
             setIsLoading(false);
