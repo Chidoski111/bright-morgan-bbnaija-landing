@@ -6,6 +6,8 @@
     justify-content: center;
     background-color: #141516;
     position: relative;
+    margin-top: 8rem; /* Add spacing from previous component */
+    
     .body{
         padding-top: 200px;
         width: 100%;
@@ -137,8 +139,11 @@
 }
 
 @media (max-width: 768px) {
-    .contact .body {
-        padding-top: 100px;
+    .contact {
+        margin-top: 12rem; /* Increased spacing on mobile for better separation */
+        
+        .body {
+            padding-top: 100px;
 
         .title {
             margin-left: 20px;
@@ -176,6 +181,6 @@
             margin-right: 20px;
             gap: 30px;
         }
+        }
     }
-    
 }

@@ -1,18 +1,38 @@
 import styles from './style.module.scss';
 import Image from 'next/image';
 import Rounded from '../../common/RoundedButton';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useScroll, motion, useTransform, useSpring } from 'framer-motion';
 import Magnetic from '../../common/Magnetic';
 
 export default function Contact() {
     const container = useRef(null);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Detect mobile viewport
+    useEffect(() => {
+        const updateIsMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        
+        updateIsMobile();
+        window.addEventListener('resize', updateIsMobile);
+        return () => window.removeEventListener('resize', updateIsMobile);
+    }, []);
+
+    // Adjust scroll offset based on device to prevent premature animation
+    const scrollOffset = isMobile 
+        ? ["start 0.6", "end end"]  // More delayed trigger on mobile
+        : ["start 0.8", "end end"]; // Slightly delayed trigger on desktop
+
     const { scrollYProgress } = useScroll({
         target: container,
-        offset: ["start end", "end end"]
+        offset: scrollOffset
     })
+    
+    // Adjust transform values for better mobile spacing
     const x = useTransform(scrollYProgress, [0, 1], [0, 100])
-    const y = useTransform(scrollYProgress, [0, 1], [-500, 0])
+    const y = useTransform(scrollYProgress, [0, 1], isMobile ? [-300, 0] : [-500, 0])
     const rotate = useTransform(scrollYProgress, [0, 1], [120, 90])
     return (
         <motion.div style={{y}} ref={container} className={styles.contact}>
