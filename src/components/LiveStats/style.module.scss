@@ -1,6 +1,6 @@
 .liveStats {
   background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
-  padding: 6rem 2rem;
+  padding: 6rem 2rem 8rem 2rem; /* Add extra bottom padding for proper spacing */
   position: relative;
   overflow: hidden;
   
@@ -346,7 +346,7 @@
 
   // Responsive Design
   @media (max-width: 768px) {
-    padding: 4rem 1rem;
+    padding: 4rem 1rem 6rem 1rem; /* Add extra bottom padding on mobile */
 
     .header {
       margin-bottom: 3rem;

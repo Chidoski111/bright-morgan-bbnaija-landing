@@ -20,19 +20,19 @@ export default function Contact() {
         return () => window.removeEventListener('resize', updateIsMobile);
     }, []);
 
-    // Adjust scroll offset based on device to prevent premature animation
+    // Optimize scroll triggers for proper sequencing after LiveStats
     const scrollOffset = isMobile 
-        ? ["start 0.6", "end end"]  // More delayed trigger on mobile
-        : ["start 0.8", "end end"]; // Slightly delayed trigger on desktop
+        ? ["start 0.8", "end end"]  // Earlier trigger on mobile for better flow
+        : ["start 0.7", "end end"]; // Earlier trigger on desktop
 
     const { scrollYProgress } = useScroll({
         target: container,
         offset: scrollOffset
     })
     
-    // Adjust transform values for better mobile spacing
-    const x = useTransform(scrollYProgress, [0, 1], [0, 100])
-    const y = useTransform(scrollYProgress, [0, 1], isMobile ? [-300, 0] : [-500, 0])
+    // Reduce transforms to prevent visual conflicts
+    const x = useTransform(scrollYProgress, [0, 1], [0, 80])
+    const y = useTransform(scrollYProgress, [0, 1], isMobile ? [-50, 0] : [-100, 0])
     const rotate = useTransform(scrollYProgress, [0, 1], [120, 90])
     return (
         <motion.div style={{y}} ref={container} className={styles.contact}>
@@ -50,8 +50,10 @@ export default function Contact() {
                     </span>
                     <h2>Bright</h2>
                     <motion.div style={{x}} className={styles.buttonContainer}>
-                        <Rounded  backgroundColor={"#FFD700"} className={styles.button}>
-                            <p>Vote Now</p>
+                        <Rounded backgroundColor={"#FFD700"} className={styles.button}>
+                            <a href="https://www.dstv.com/africamagic/en-ng/show/big-brother-naija/season/10/vote" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none', color: 'inherit'}}>
+                                <p>Vote Now</p>
+                            </a>
                         </Rounded>
                     </motion.div>
                     <motion.svg style={{rotate, scale: 2}} width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,10 +62,14 @@ export default function Contact() {
                 </div>
                 <div className={styles.nav}>
                         <Rounded>
-                            <p>Vote: africamagic.dstv.com/vote</p>
+                            <a href="https://www.dstv.com/africamagic/en-ng/show/big-brother-naija/season/10/vote" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none', color: 'inherit'}}>
+                                <p>Vote: dstv.com/africamagic</p>
+                            </a>
                         </Rounded>
                         <Rounded>
-                            <p>Join: Team BRIGHTSTARS</p>
+                            <a href="https://wa.me/message/OXRCFTEPZDSIL1" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none', color: 'inherit'}}>
+                                <p>Join: Team BRIGHTSTARS</p>
+                            </a>
                         </Rounded>
                 </div>
                 <div className={styles.info}>
@@ -81,17 +87,25 @@ export default function Contact() {
                         <span>
                             <h3>socials</h3>
                             <Magnetic>
-                                <p>Instagram</p>
+                                <a href="https://instagram.com/bright_morgan_" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none', color: 'inherit'}}>
+                                    <p>Instagram</p>
+                                </a>
                             </Magnetic>
                         </span>
                         <Magnetic>
-                            <p>Twitter/X</p>
+                            <a href="https://twitter.com/bright_morgan_" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none', color: 'inherit'}}>
+                                <p>Twitter/X</p>
+                            </a>
                         </Magnetic>
                         <Magnetic>
-                            <p>LinkedIn</p>
+                            <a href="https://linkedin.com/in/bright-morgan" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none', color: 'inherit'}}>
+                                <p>LinkedIn</p>
+                            </a>
                         </Magnetic>
                         <Magnetic>
-                            <p>WhatsApp</p>
+                            <a href="https://wa.me/message/OXRCFTEPZDSIL1" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none', color: 'inherit'}}>
+                                <p>WhatsApp</p>
+                            </a>
                         </Magnetic>
                     </div>
                 </div>

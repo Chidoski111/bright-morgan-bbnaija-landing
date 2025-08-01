@@ -46,7 +46,7 @@ export default function Header() {
             <div className={styles.nav}>
                 <Magnetic>
                     <div className={styles.el}>
-                        <a>About Bright</a>
+                        <a href="https://www.dstv.com/africamagic/en-ng/show/big-brother-naija/season/10/housemates/bright-morgan/op_profile" target="_blank" rel="noopener noreferrer">About Bright</a>
                         <div className={styles.indicator}></div>
                     </div>
                 </Magnetic>
@@ -58,7 +58,7 @@ export default function Header() {
                 </Magnetic>
                 <Magnetic>
                     <div className={styles.el}>
-                        <a>Vote Bright</a>
+                        <a href="https://www.dstv.com/africamagic/en-ng/show/big-brother-naija/season/10/vote" target="_blank" rel="noopener noreferrer">Vote Bright</a>
                         <div className={styles.indicator}></div>
                     </div>
                 </Magnetic>

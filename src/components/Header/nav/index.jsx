@@ -13,12 +13,12 @@ const navItems = [
     href: "/",
   },
   {
-    title: "Work",
-    href: "/work",
+    title: "About Bright",
+    href: "https://www.dstv.com/africamagic/en-ng/show/big-brother-naija/season/10/housemates/bright-morgan/op_profile",
   },
   {
-    title: "About",
-    href: "/about",
+    title: "Vote Bright",
+    href: "https://www.dstv.com/africamagic/en-ng/show/big-brother-naija/season/10/vote",
   },
   {
     title: "Contact",

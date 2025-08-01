@@ -6,6 +6,9 @@ import { slide, scale } from '../../animation';
 export default function Index({data, isActive, setSelectedIndicator}) {
   
     const { title, href, index} = data;
+    
+    // Check if it's an external URL
+    const isExternal = href.startsWith('http');
   
     return (
       <motion.div 
@@ -22,7 +25,11 @@ export default function Index({data, isActive, setSelectedIndicator}) {
           animate={isActive ? "open" : "closed"} 
           className={styles.indicator}>
         </motion.div>
-        <Link href={href}>{title}</Link>
+        {isExternal ? (
+          <a href={href} target="_blank" rel="noopener noreferrer">{title}</a>
+        ) : (
+          <Link href={href}>{title}</Link>
+        )}
       </motion.div>
     )
 }

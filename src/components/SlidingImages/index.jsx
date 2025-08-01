@@ -119,6 +119,14 @@ export default function SlidingImages() {
             }
         };
 
+        // Prevent wheel scrolling on the sliding images container
+        const preventWheel = (e) => {
+            if (container.current && container.current.contains(e.target)) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        };
+
         if (modalState.isOpen) {
             window.addEventListener('scroll', handleScroll, { passive: true });
             if (isTouch) {
@@ -127,10 +135,14 @@ export default function SlidingImages() {
             }
         }
 
+        // Always prevent wheel scrolling on the component
+        window.addEventListener('wheel', preventWheel, { passive: false });
+
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('touchmove', handleTouchMove);
             window.removeEventListener('touchend', handleScroll);
+            window.removeEventListener('wheel', preventWheel);
             clearTimeout(scrollTimer);
         };
     }, [modalState.isOpen, lastScrollY, isTouch]);
@@ -194,7 +206,12 @@ export default function SlidingImages() {
 
     return (
         <>
-            <div ref={container} className={styles.slidingImages}>
+            <div 
+                ref={container} 
+                className={styles.slidingImages}
+                onWheel={(e) => e.preventDefault()} // Prevent wheel scrolling directly on the component
+                onScroll={(e) => e.preventDefault()} // Prevent scroll events
+            >
                 <motion.div style={{x: x1}} className={styles.slider}>
                         {
                             slider1.map( (project, index) => {

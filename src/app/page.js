@@ -20,10 +20,17 @@ export default function Home() {
           const LocomotiveScroll = (await import('locomotive-scroll')).default
           const locomotiveScroll = new LocomotiveScroll({
             lenisOptions: {
+              duration: 1.8,
+              easing: (t) => 1 - Math.pow(1 - t, 3),
               touchMultiplier: 2,
+              wheelMultiplier: 1.2,
               infinite: false,
               smoothTouch: true,
-              gestureOrientation: "vertical"
+              gestureOrientation: "vertical",
+              normalizeWheel: true,
+              syncTouch: true,
+              smoothWheel: true,
+              lerp: 0.1
             }
           });
 
