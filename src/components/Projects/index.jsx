@@ -9,24 +9,24 @@ import Rounded from '../../common/RoundedButton';
 
 const projects = [
   {
-    title: "C2 Montreal",
-    src: "c2montreal.png",
-    color: "#000000"
+    title: "Charismatic Model",
+    src: "morgan-main.jpg",
+    color: "#8B4513"
   },
   {
-    title: "Office Studio",
-    src: "officestudio.png",
-    color: "#8C8C8C"
+    title: "Talented Actor", 
+    src: "morgan-relaxed.jpg",
+    color: "#4A4A4A"
   },
   {
-    title: "Locomotive",
-    src: "locomotive.png",
-    color: "#EFE8D3"
+    title: "Skilled Chef",
+    src: "morgan-selfie.jpg",
+    color: "#FF6B35"
   },
   {
-    title: "Silencio",
-    src: "silencio.png",
-    color: "#706D63"
+    title: "Rising Star",
+    src: "fineboy-morgan.jpg",
+    color: "#FFD700"
   }
 ]
 
@@ -86,7 +86,7 @@ export default function Home() {
       }
     </div>
     <Rounded>
-      <p>More work</p>
+      <p>Team BRIGHTSTARS</p>
     </Rounded>
     <>
         <motion.div ref={modalContainer} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"} className={styles.modalContainer}>
@@ -96,10 +96,10 @@ export default function Home() {
                 const { src, color } = project
                 return <div className={styles.modal} style={{backgroundColor: color}} key={`modal_${index}`}>
                     <Image 
-                    src={`/images/${src}`}
+                    src={`/${src}`}
                     width={300}
                     height={0}
-                    alt="image"
+                    alt="Bright Morgan"
                     />
                 </div>
                 })

@@ -22,16 +22,16 @@ export default function index() {
                         <div className={styles.imageContainer}>
                             <Image 
                             fill={true}
-                            alt={"image"}
-                            src={`/images/background.jpg`}
+                            alt={"Bright Morgan"}
+                            src={`/morgan-main.jpg`}
                             />
                         </div>
-                        <h2>Let's work</h2>
+                        <h2>Vote for</h2>
                     </span>
-                    <h2>together</h2>
+                    <h2>Bright</h2>
                     <motion.div style={{x}} className={styles.buttonContainer}>
-                        <Rounded  backgroundColor={"#334BD3"} className={styles.button}>
-                            <p>Get in touch</p>
+                        <Rounded  backgroundColor={"#FFD700"} className={styles.button}>
+                            <p>Vote Now</p>
                         </Rounded>
                     </motion.div>
                     <motion.svg style={{rotate, scale: 2}} width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -40,38 +40,38 @@ export default function index() {
                 </div>
                 <div className={styles.nav}>
                         <Rounded>
-                            <p>info@dennissnellenberg.com</p>
+                            <p>Vote: africamagic.dstv.com/vote</p>
                         </Rounded>
                         <Rounded>
-                            <p>+31 6 27 84 74 30</p>
+                            <p>Join: Team BRIGHTSTARS</p>
                         </Rounded>
                 </div>
                 <div className={styles.info}>
                     <div>
                         <span>
-                            <h3>Version</h3>
-                            <p>2022 © Edition</p>
+                            <h3>Season</h3>
+                            <p>BBNaija 10</p>
                         </span>
                         <span>
-                            <h3>Version</h3>
-                            <p>11:49 PM GMT+2</p>
+                            <h3>Status</h3>
+                            <p>Vote Now Active</p>
                         </span>
                     </div>
                     <div>
                         <span>
                             <h3>socials</h3>
                             <Magnetic>
-                                <p>Awwwards</p>
+                                <p>Instagram</p>
                             </Magnetic>
                         </span>
                         <Magnetic>
-                            <p>Instagram</p>
+                            <p>Twitter/X</p>
                         </Magnetic>
                         <Magnetic>
-                            <p>Dribbble</p>
+                            <p>LinkedIn</p>
                         </Magnetic>
                         <Magnetic>
-                            <p>Linkedin</p>
+                            <p>WhatsApp</p>
                         </Magnetic>
                     </div>
                 </div>

@@ -5,7 +5,7 @@ import { slideUp, opacity } from './animation';
 import Rounded from '../../common/RoundedButton';
 export default function index() {
 
-    const phrase = "Helping brands to stand out in the digital era. Together we will set the new status quo. No nonsense, always on the cutting edge.";
+    const phrase = "28-year-old multi-talented star ready to win BBNaija Season 10. Four years of dedication, countless auditions, one dream realized.";
     const description = useRef(null);
     const isInView = useInView(description)
     return (
@@ -18,10 +18,10 @@ export default function index() {
                     })
                 }
                 </p>
-                <motion.p variants={opacity} animate={isInView ? "open" : "closed"}>The combination of my passion for design, code & interaction positions me in a unique place in the web design world.</motion.p>
+                <motion.p variants={opacity} animate={isInView ? "open" : "closed"}>The combination of my passion for modeling, acting, and culinary arts positions me as the most versatile housemate in BBNaija history. Join Team BRIGHTSTARS!</motion.p>
                 <div data-scroll data-scroll-speed={0.1}>
                     <Rounded className={styles.button}>
-                        <p>About me</p>
+                        <p>Vote Now</p>
                     </Rounded>
                 </div>
             </div>

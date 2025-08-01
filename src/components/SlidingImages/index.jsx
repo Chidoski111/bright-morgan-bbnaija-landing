@@ -5,39 +5,39 @@ import Image from 'next/image';
 
 const slider1 = [
     {
-        color: "#e3e5e7",
-        src: "c2.jpg"
+        color: "#8B4513",
+        src: "morgan-main.jpg"
     },
     {
-        color: "#d6d7dc",
-        src: "decimal.jpg"
+        color: "#FFD700",
+        src: "fineboy-morgan.jpg"
     },
     {
-        color: "#e3e3e3",
-        src: "funny.jpg"
+        color: "#4A4A4A",
+        src: "morgan-relaxed.jpg"
     },
     {
-        color: "#21242b",
-        src: "google.jpg"
+        color: "#FF6B35",
+        src: "morgan-selfie.jpg"
     }
 ]
 
 const slider2 = [
     {
-        color: "#d4e3ec",
-        src: "maven.jpg"
+        color: "#8B4513",
+        src: "morgan-main.jpg"
     },
     {
-        color: "#e5e0e1",
-        src: "panda.jpg"
+        color: "#FFD700", 
+        src: "fineboy-morgan.jpg"
     },
     {
-        color: "#d7d4cf",
-        src: "powell.jpg"
+        color: "#4A4A4A",
+        src: "morgan-relaxed.jpg"
     },
     {
-        color: "#e1dad6",
-        src: "wix.jpg"
+        color: "#FF6B35",
+        src: "morgan-selfie.jpg"
     }
 ]
 
@@ -62,8 +62,8 @@ export default function index() {
                                 <div className={styles.imageContainer}>
                                     <Image 
                                     fill={true}
-                                    alt={"image"}
-                                    src={`/images/${project.src}`}/>
+                                    alt={"Bright Morgan"}
+                                    src={`/${project.src}`}/>
                                 </div>
                             </div>
                         })
@@ -76,8 +76,8 @@ export default function index() {
                                 <div key={index} className={styles.imageContainer}>
                                     <Image 
                                     fill={true}
-                                    alt={"image"}
-                                    src={`/images/${project.src}`}/>
+                                    alt={"Bright Morgan"}
+                                    src={`/${project.src}`}/>
                                 </div>
                             </div>
                         })
