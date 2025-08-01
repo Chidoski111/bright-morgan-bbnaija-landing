@@ -12,32 +12,41 @@
     
     .sliderContainer{
       position: absolute;
-      top: calc(100vh - 350px);
       width: 100%;
       overflow-x: hidden;
       display: flex;
       justify-content: center;
+      align-items: flex-end;
+      height: 100vh;
+      pointer-events: none;
+      bottom: 15vh; // Adjust bottom position
       
       @media (max-width: 768px) {
-        top: calc(100vh - 180px);
         padding: 0 20px;
+        bottom: 25vh; // More space from bottom on mobile
+        align-items: flex-end;
       }
     }
     
     .slider{
       position: relative;
       white-space: nowrap;
+      width: 100%;
+      text-align: center;
     }
     
     .slider p{
       position: relative;
       margin: 0px;
       color: white;
-      font-size: clamp(80px, 15vw, 230px);
+      font-size: clamp(40px, 10vw, 230px);
       font-weight: 500;
-      padding-right: 50px;
+      padding: 0;
       text-align: center;
       white-space: nowrap;
+      width: 100%;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
     }
     
     .slider p:nth-of-type(2){
@@ -49,17 +58,31 @@
     .description{
       position: absolute;
       top: 35%;
-      left: 65%;
       color: white;
       font-size: 24px;
       font-weight: 300;
+      text-align: center;
+      width: 100%;
+      padding: 0 20px;
+
+      @media (min-width: 768px) {
+        left: 65%;
+        width: auto;
+        text-align: left;
+        padding: 0;
+      }
+
       p{
         margin: 0px;
         margin-bottom: 10px;
       }
       svg{
         transform: scale(2);
-        margin-bottom: 100px;
+        margin-bottom: 50px;
+        
+        @media (min-width: 768px) {
+          margin-bottom: 100px;
+        }
       }
     }
   }
