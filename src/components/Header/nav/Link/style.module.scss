@@ -2,13 +2,22 @@
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 100%;
     
     .indicator{
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
         background-color: white;
         border-radius: 50%;
         position: absolute;
-        left: -30px;
+        left: clamp(0px, calc(50% - 60px), -30px);
+        transform: translateX(-50%);
+    }
+
+    a {
+        text-align: center;
+        padding: 5px 0;
+        width: fit-content;
     }
 }
