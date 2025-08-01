@@ -1,6 +1,6 @@
 'use client';
 import styles from './page.module.scss'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { AnimatePresence } from 'framer-motion';
 import Preloader from '../components/Preloader';
 import Landing from '../components/Landing';
@@ -12,6 +12,7 @@ import Contact from '../components/Contact';
 export default function Home() {
 
   const [isLoading, setIsLoading] = useState(true);
+  const scroll = useRef(null);
 
   useEffect( () => {
     (
@@ -19,7 +20,8 @@ export default function Home() {
           const LocomotiveScroll = (await import('locomotive-scroll')).default
           const locomotiveScroll = new LocomotiveScroll({
             lenisOptions: {
-              touchMultiplier: 2,
+              lerp: 0.08,
+              touchMultiplier: 2.5,
               infinite: false,
               smoothTouch: true,
               gestureOrientation: "vertical"
@@ -32,7 +34,13 @@ export default function Home() {
             window.scrollTo(0,0);
           }, 2000)
       }
-    )()
+    )();
+
+    return () => {
+      if(scroll.current) {
+        scroll.current.destroy();
+      }
+    }
   }, [])
 
   return (
