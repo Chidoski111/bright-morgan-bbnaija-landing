@@ -3,7 +3,7 @@ import { useInView, motion } from 'framer-motion';
 import { useRef } from 'react';
 import { slideUp, opacity } from './animation';
 import Rounded from '../../common/RoundedButton';
-export default function index() {
+export default function Description() {
 
     const phrase = "28-year-old multi-talented star ready to win BBNaija Season 10. Four years of dedication, countless auditions, one dream realized.";
     const description = useRef(null);
