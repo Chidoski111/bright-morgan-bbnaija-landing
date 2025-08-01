@@ -6,9 +6,25 @@
     margin-top: 12.5rem;
     background-color: white;
     z-index: 1;
-    overflow: hidden; // Prevent all scrolling
+    overflow: hidden;
     width: 100%;
-    pointer-events: none; // Disable pointer events to prevent wheel interactions
+    
+    // Disable all scrolling and wheel events
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    
+    // Prevent wheel events from affecting this component
+    &, * {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
+    }
     
     .slider{
         display: flex;
@@ -16,7 +32,14 @@
         gap: 1.5rem;
         width: 110%;
         left: -5%;
-        pointer-events: auto; // Re-enable pointer events only for the slider content
+        
+        // Remove scrollbars completely
+        overflow: visible;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        -ms-overflow-style: none;
+        scrollbar-width: none;
         
         .project{
             width: 25%;

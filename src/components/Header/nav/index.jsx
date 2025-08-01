@@ -20,10 +20,6 @@ const navItems = [
     title: "Vote Bright",
     href: "https://www.dstv.com/africamagic/en-ng/show/big-brother-naija/season/10/vote",
   },
-  {
-    title: "Contact",
-    href: "/contact",
-  },
 ]
 
 export default function Navigation() {

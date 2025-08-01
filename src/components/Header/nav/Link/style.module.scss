@@ -6,18 +6,19 @@
     width: 100%;
     
     .indicator{
-        width: 8px;
-        height: 8px;
-        background-color: white;
-        border-radius: 50%;
-        position: absolute;
-        left: clamp(0px, calc(50% - 60px), -30px);
-        transform: translateX(-50%);
+        display: none; // Remove the dot indicators from mobile nav too
     }
 
     a {
         text-align: center;
         padding: 5px 0;
         width: fit-content;
+        text-decoration: none;
+        color: white;
+        transition: color 0.3s ease;
+        
+        &:hover {
+            color: #FFD700;
+        }
     }
 }

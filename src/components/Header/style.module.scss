@@ -67,25 +67,25 @@
             z-index: 1;
             padding: 15px;
             cursor: pointer;
-            &:hover{
-                .indicator{
-                    transform: scale(1);
+            
+            a {
+                text-decoration: none;
+                color: white;
+                transition: color 0.3s ease;
+                
+                &:hover {
+                    color: #FFD700;
                 }
             }
+            
             .indicator{
-                position: absolute;
-                width: 5px;
-                height: 5px;
-                top: 45px;
-                left: 50%;
-                background-color: white;
-                border-radius: 50%;
-                transform: scale(0) translateX(-50%);
-                transition: transform 0.2s cubic-bezier(0.76, 0, 0.24, 1);
+                display: none; // Remove the dot indicators
             }
         }
         a{
             cursor: pointer;
+            text-decoration: none;
+            color: white;
         }
     } 
 }
