@@ -21,7 +21,9 @@ export default function Description() {
                 <motion.p variants={opacity} animate={isInView ? "open" : "closed"}>The combination of my passion for modeling, acting, and culinary arts positions me as the most versatile housemate in BBNaija history. Join Team BRIGHTSTARS!</motion.p>
                 <div data-scroll data-scroll-speed={0.1}>
                     <Rounded className={styles.button}>
-                        <p>Vote Now</p>
+                        <a href="https://www.dstv.com/africamagic/en-ng/show/big-brother-naija/season/10/vote" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none', color: 'inherit'}}>
+                            <p>Vote Now</p>
+                        </a>
                     </Rounded>
                 </div>
             </div>
